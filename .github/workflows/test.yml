@@ -22,9 +22,19 @@ jobs:
           version: ${{ matrix.emacs_version }}
       - uses: conao3/setup-cask@master
 
-      - name: build
-        run: 'echo build > build'
+      - name: Build
+        run: |
+          make
 
-      - name: deploy
+      - name: Install SSH key
         if: github.ref == 'refs/heads/master'
-        run: 'pwd && ls -la'
+        uses: shimataro/ssh-key-action@v1
+        with:
+          private-key: ${{ secrets.SSH_KEY }}
+          public-key: ${{ secrets.SSH_KEY_PUBLIC }}
+          known-hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        run: |
+          rsync -av -e 'ssh' --delete --exclude=working ./ conao3@conao3.sakura.ne.jp::www/celpa/
