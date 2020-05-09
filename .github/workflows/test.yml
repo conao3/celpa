@@ -22,11 +22,7 @@ jobs:
 
       - name: build
         run: 'echo build > build'
-  deploy:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@master
-      - name: build
+
+      - name: deploy
+        if: github.ref == 'refs/heads/master'
         run: 'pwd && ls -la'
