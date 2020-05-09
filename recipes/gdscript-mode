@@ -1,2 +1,0 @@
-(gdscript-mode :fetcher github
-               :repo "GDQuest/emacs-gdscript-mode")

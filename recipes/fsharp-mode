@@ -1,3 +1,0 @@
-(fsharp-mode
- :fetcher github
- :repo "fsharp/emacs-fsharp-mode")
