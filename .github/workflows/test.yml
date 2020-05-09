@@ -16,6 +16,10 @@ jobs:
           - '26.3'
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: working
+          key: ${{ runner.os }}-working
       - uses: actions/setup-python@v1.1.1
       - uses: purcell/setup-emacs@master
         with:
