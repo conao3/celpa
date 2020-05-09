@@ -1,5 +1,9 @@
 name: Main workflow
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build:
@@ -9,12 +13,20 @@ jobs:
         emacs_version:
           - '26.3'
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1.1.1
-    - uses: purcell/setup-emacs@master
-      with:
-        version: ${{ matrix.emacs_version }}
-    - uses: conao3/setup-cask@master
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1.1.1
+      - uses: purcell/setup-emacs@master
+        with:
+          version: ${{ matrix.emacs_version }}
+      - uses: conao3/setup-cask@master
 
-    - name: build
-      run: 'make'
+      - name: build
+        run: 'echo build > build'
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@master
+      - name: build
+        run: 'pwd && ls -la'
