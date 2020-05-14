@@ -12,6 +12,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/melpa.css" type="text/css">
+        <style></style>
     </head>
     <body>
         <header class="navbar navbar-fixed-top">
@@ -28,43 +29,28 @@
             </div>
         </header>
         <main class="container" id="content">
-            <h1><span class="archive-name">CELPA</span> (Conao3’s Emacs Lisp Package Archive)</h1>
-            <ul>
-                <li><strong>Up-to-date packages built on our servers from upstream source</strong></li>
-                <li><strong>Installable in any Emacs with 'package.el'</strong> - no local version-control tools needed</li>
-                <li><strong>Curated</strong> - no obsolete, renamed, forked or randomly hacked packages</li>
-                <li><strong>Comprehensive</strong> - more packages than any other archive</li>
-                <li><strong>Automatic updates</strong> - new commits result in new packages</li>
-                <li><strong>Extensible</strong> - contribute recipes via github, and we'll build the packages</li>
-            </ul>
+            <section class="page-header">
+                <h1><span class="archive-name">CELPA</span> <small>(Conao3’s Emacs Lisp Package Archive)</small></h1>
+            </section>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                    <ul>
+                        <li><strong>Up-to-date packages built on our servers from upstream source</strong></li>
+                        <li><strong>Installable in any Emacs with 'package.el'</strong> - no local version-control tools needed</li>
+                        <li><strong>Curated</strong> - no obsolete, renamed, forked or randomly hacked packages</li>
+                        <li><strong>Comprehensive</strong> - more packages than any other archive</li>
+                        <li><strong>Automatic updates</strong> - new commits result in new packages</li>
+                        <li><strong>Extensible</strong> - contribute archives via github, and we'll build the packages</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
             <section id="packages">
-                <h2>Current List of 4,590 Packages</h2>
+                <h2 id="list-info"></h2>
                 <table id="package-list" class="table table-bordered table-responsive table-hover">
-                    <thead>
-                        <tr>
-                            <th>Package</th>
-                            <th>Description</th>
-                            <th>Version</th>
-                            <th>Recipe</th>
-                            <th>Source</th>
-                        </tr>
-                    </thead>
-                    <tbody id="main-table">
-                        <tr>
-                            <td>0blayout</td>
-                            <td>Layout grouping with ease</td>
-                            <td class="version"><a href="packages/0blayout-20190703.527.el">20190703.527 <span class="glyphicon glyphicon-download"></span></a></td>
-                            <td class="recipe"><a href="https://github.com/melpa/melpa/blob/master/recipes/0blayout"><span class="glyphicon glyphicon-cutlery"></span></a></td>
-                            <td class="source"><a href="https://github.com/etu/0blayout-mode/tree/fd9a8f353dbd45b4628b5f84b8d8c2525ebf571d">github</a></td>
-                        </tr>
-                        <tr>
-                            <td>0x0</td>
-                            <td>Upload to 0x0.st</td>
-                            <td class="version"><a href="packages/0x0-20200411.1227.el">20200411.1227 <span class="glyphicon glyphicon-download"></span></a></td>
-                            <td class="recipe"><a href="https://github.com/melpa/melpa/blob/master/recipes/0x0"><span class="glyphicon glyphicon-cutlery"></span></a></td>
-                            <td class="source"><a href="https://git.sr.ht/~zge/nullpointer-emacs">git</a></td>
-                        </tr>
-                    </tbody>
+                    <thead><tr><th>Package</th><th>Description</th><th>Version</th><th>Recipe</th><th>Source</th></tr></thead>
+                    <tbody id="main-table"></tbody>
                 </table>
             </section>
         </main>
@@ -77,83 +63,31 @@
         </footer>
     </body>
     <script>
-     $.getJSON('/archive.json', function(data) {
-         var items = [];
-         $.each(data, function(key, val) {
-             items.push('<li id="' + key + '">' + val + '</li>');
-         });
-         $('<ul/>', {
-             'class': 'my-new-list',
-             html: items.join('')
-         }).appendTo('body');
-         $('<ul/>', {
-             'class': 'my-new-list',
-             html: Object.keys(data)
-         }).appendTo('body');
-     });
+     $.getJSON('/recipes.json', function(recipes) {
+         $.getJSON('/archive.json', function(archives) {
+             var el = document.getElementById('main-table');
+             var keys = Object.keys(archives);
+             var vals = Object.values(archives);
+             var htmls = [];
 
-     function search(query) {
-         var result = searchData(query);
-         var html = createHtml(result);
-         showResult(html);
-         showResultCount(result.length, data.length);
-     }
-
-     function searchData(query) {
-         // [inx, beg, end]
-         var result = [];
-
-         query = query.trim();
-         if (query.length < 1) {
-             return result;
-         }
-         var re = new RegExp(query, 'i');
-         for (var i = 0; i < data.length; ++i) {
-             var pos = data[i].body.search(re);
-             if (pos != -1) {
-                 result.push([i, pos, pos + query.length]);
+             for (var i = 0; i < keys.length; ++i) {
+                 var key = keys[i];
+                 var val = vals[i];
+                 var recipe = recipes[key];
+                 var ver = val["ver"].join('.');
+                 htmls.push('<tr>' +
+                            '<td><a href="https://github.com/' + recipe["repo"] + '">' + key + '</a></td>' +
+                            '<td>' + val["desc"] + '</td>' +
+                            '<td><a href="packages/' + key + '-' + ver + (val['type']==='single' ? '.el' : '.tar') + '">' + ver + ' <span class="glyphicon glyphicon-download"></span></a></td>' +
+                            '<td><a href="https://github.com/conao3/celpa/blob/master/recipes/' + key + '"><span class="glyphicon glyphicon-cutlery"></span></a></td>' +
+                            '<td><a href="https://github.com/' + recipe["repo"] + '">' + recipe["fetcher"] + '</a></td>' +
+                            '</tr>');
              }
-         }
-         return result;
-     }
-
-     function createHtml(result) {
-         var htmls = [];
-         for (var i = 0; i < result.length; ++i) {
-             var dataIndex = result[i][0];
-             var startPos = result[i][1];
-             var endPos = result[i][2];
-             var url = data[dataIndex].url;
-             var title = data[dataIndex].title;
-             var body = data[dataIndex].body;
-             htmls.push(createEntry(url, title, body, startPos, endPos));
-         }
-         return htmls.join('');
-     }
-
-     function createEntry(url, title, body, startPos, endPos) {
-         return '<ul class="article-listing-item">' +
-                '<a class="article-listing-title" href="' + url + '">' + title + '</a>' +
-                '<div class="article-listing-summary">' + excerpt(body, startPos, endPos) + '</div>' +
-                '</ul>';
-     }
-
-     function excerpt(body, startPos, endPos) {
-         return [
-             body.substring(startPos - 30, startPos),
-             '<span class="article-listing-strong">', body.substring(startPos, endPos), '</span>',
-             body.substring(endPos, endPos + 200)
-         ].join('');
-     }
-
-     function showResult(html) {
-         var el = document.getElementById('result');
-         el.innerHTML = html;
-     }
-
-     function showResultCount(count, total) {
-         var el = document.getElementById('resultCount');
-         el.innerHTML = 'Found <b>' + count + '</b> pages（in ' + total + ' pages）';
-     }
+             
+             el.innerHTML = htmls.join('');
+             
+             var el = document.getElementById('list-info');
+             el.innerHTML = 'Current List of ' + keys.length + ' Packages';
+     })});
     </script>
 </html>
