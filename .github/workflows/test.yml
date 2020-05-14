@@ -46,4 +46,4 @@ jobs:
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         run: |
-          rsync -av -e 'ssh' --delete --exclude=working ./ conao3@conao3.sakura.ne.jp::www/celpa/
+          rsync -avl -e 'ssh' --delete --exclude=working ./ conao3@conao3.sakura.ne.jp::www/celpa/
