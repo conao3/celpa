@@ -36,6 +36,13 @@
                 <li><strong>Extensible</strong> - contribute recipes via github, and we'll build the packages</li>
             </ul>
             <p>This site requires JavaScript to function. You can browse and install packages directly from Emacs (<a href="https://github.com/conao3/celpa">see CELPA's README.md on GitHub</a>).</p>
+            <form>
+                <div id="search-form" class="form-group">
+                    <input class="form-control" onkeyup="search(this.value)" autocomplete="off" autofocus placeholder="Search" />
+                    <span id="inputWord"></span><span id="resultCount"></span>
+                </div>
+                <ul id="result" class="article-listing"><p>Please input query...</p></ul>
+            </form>
         </main>
         <footer class="container">
             <small>
@@ -45,4 +52,72 @@
             </small>
         </footer>
     </body>
+    <script>
+     $.getJSON("/archive.json", function(json) {
+         console.log(json); // this will show the info it in firebug console
+     });
+     function search(query) {
+         var result = searchData(query);
+         var html = createHtml(result);
+         showResult(html);
+         showResultCount(result.length, data.length);
+     }
+
+     function searchData(query) {
+         // [inx, beg, end]
+         var result = [];
+
+         query = query.trim();
+         if (query.length < 1) {
+             return result;
+         }
+         var re = new RegExp(query, 'i');
+         for (var i = 0; i < data.length; ++i) {
+             var pos = data[i].body.search(re);
+             if (pos != -1) {
+                 result.push([i, pos, pos + query.length]);
+             }
+         }
+         return result;
+     }
+
+     function createHtml(result) {
+         var htmls = [];
+         for (var i = 0; i < result.length; ++i) {
+             var dataIndex = result[i][0];
+             var startPos = result[i][1];
+             var endPos = result[i][2];
+             var url = data[dataIndex].url;
+             var title = data[dataIndex].title;
+             var body = data[dataIndex].body;
+             htmls.push(createEntry(url, title, body, startPos, endPos));
+         }
+         return htmls.join('');
+     }
+
+     function createEntry(url, title, body, startPos, endPos) {
+         return '<ul class="article-listing-item">' +
+                '<a class="article-listing-title" href="' + url + '">' + title + '</a>' +
+                '<div class="article-listing-summary">' + excerpt(body, startPos, endPos) + '</div>' +
+                '</ul>';
+     }
+
+     function excerpt(body, startPos, endPos) {
+         return [
+             body.substring(startPos - 30, startPos),
+             '<span class="article-listing-strong">', body.substring(startPos, endPos), '</span>',
+             body.substring(endPos, endPos + 200)
+         ].join('');
+     }
+
+     function showResult(html) {
+         var el = document.getElementById('result');
+         el.innerHTML = html;
+     }
+
+     function showResultCount(count, total) {
+         var el = document.getElementById('resultCount');
+         el.innerHTML = 'Found <b>' + count + '</b> pages（in ' + total + ' pages）';
+     }
+    </script>
 </html>
