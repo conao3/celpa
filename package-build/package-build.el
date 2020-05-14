@@ -160,8 +160,10 @@ parses the first match group instead of STR."
                    (concat (match-string 1 str) "-" (match-string 2 str) "-"
                            (match-string 3 str) " " (match-string 4 str))
                  str))))
+    ;; (concat (format-time-string "%Y%m%d." time t)
+    ;;         (format "%d" (string-to-number (format-time-string "%H%M" time t))))
     (concat (format-time-string "%Y%m%d." time t)
-            (format "%d" (string-to-number (format-time-string "%H%M" time t))))))
+            (format "%d" (+ 1000 (string-to-number (format-time-string "%H%M" time t)))))))
 
 (defun package-build--find-version-newest (tags &optional regexp)
   "Find the newest version in TAGS matching REGEXP.
