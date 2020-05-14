@@ -1,2 +1,0 @@
-(eldev :repo "doublep/eldev"
-       :fetcher github)

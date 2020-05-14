@@ -1,1 +1,0 @@
-(anaconda-mode :fetcher github :repo "pythonic-emacs/anaconda-mode")

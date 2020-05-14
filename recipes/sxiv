@@ -1,3 +1,0 @@
-(sxiv
- :fetcher gitlab
- :repo "contrapunctus/sxiv.el")

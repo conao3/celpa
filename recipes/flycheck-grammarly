@@ -1,1 +1,0 @@
-(flycheck-grammarly :repo "jcs-elpa/flycheck-grammarly" :fetcher github)
