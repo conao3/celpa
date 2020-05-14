@@ -30,6 +30,7 @@ jobs:
 
       - name: Build
         run: |
+          git status
           make add-package-build-remote
           make pull-package-build
           make
