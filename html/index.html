@@ -8,6 +8,8 @@
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Melpa" >
         <link href="/updates.rss" rel="alternate" title="MELPA updates" type="application/rss+xml">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/melpa.css" type="text/css">
     </head>
@@ -53,9 +55,21 @@
         </footer>
     </body>
     <script>
-     $.getJSON("/archive.json", function(json) {
-         console.log(json); // this will show the info it in firebug console
+     $.getJSON('/archive.json', function(data) {
+         var items = [];
+         $.each(data, function(key, val) {
+             items.push('<li id="' + key + '">' + val + '</li>');
+         });
+         $('<ul/>', {
+             'class': 'my-new-list',
+             html: items.join('')
+         }).appendTo('body');
+         $('<ul/>', {
+             'class': 'my-new-list',
+             html: Object.keys(data)
+         }).appendTo('body');
      });
+
      function search(query) {
          var result = searchData(query);
          var html = createHtml(result);
