@@ -12,7 +12,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/melpa.css" type="text/css">
-        <style></style>
+        <style>pre{padding-left: 5rem;}</style>
     </head>
     <body>
         <header class="navbar navbar-fixed-top">
@@ -23,7 +23,7 @@
                 <nav class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="#/">Packages</a></li>
-                        <li><a href="https://github.com/celpa/celpa">GitHub</a></li>
+                        <li><a href="https://github.com/conao3/celpa">GitHub</a></li>
                     </ul>
                 </nav>
             </div>
@@ -35,14 +35,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="jumbotron">
-                    <ul>
-                        <li><strong>Up-to-date packages built on our servers from upstream source</strong></li>
-                        <li><strong>Installable in any Emacs with 'package.el'</strong> - no local version-control tools needed</li>
-                        <li><strong>Curated</strong> - no obsolete, renamed, forked or randomly hacked packages</li>
-                        <li><strong>Comprehensive</strong> - more packages than any other archive</li>
-                        <li><strong>Automatic updates</strong> - new commits result in new packages</li>
-                        <li><strong>Extensible</strong> - contribute archives via github, and we'll build the packages</li>
-                    </ul>
+                        <ul>
+                            <li><strong>Launch pad</strong> - before adding <a href="https://melpa.org/">MELPA</a></li>
+                            <li><strong>Anytime latest version</strong> - Build every 30min and every your PRs via <a href="https://github.com/conao3/celpa/actions">GitHub Actions</a></li>
+                            <li><strong>Easy install via package.el</strong> - no more el-get, or something else</li>
+                            <pre><code>
+(setq package-archives
+      '(("celpa" . "https://celpa.conao3.com/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("org" . "https://orgmode.org/elpa/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+                            </code></pre>
+                            <li>Original (inherited) <a href="https://melpa.org/">MELPA</a> features</li>
+                                <ul>
+                                    <li><strong>Up-to-date packages built on our servers from upstream source</strong></li>
+                                    <li><strong>Installable in any Emacs with 'package.el'</strong> - no local version-control tools needed</li>
+                                    <li><strong>Curated</strong> - no obsolete, renamed, forked or randomly hacked packages</li>
+                                    <li><strong>Comprehensive</strong> - more packages than any other archive</li>
+                                    <li><strong>Automatic updates</strong> - new commits result in new packages</li>
+                                    <li><strong>Extensible</strong> - contribute archives via github, and we'll build the packages</li>
+                                </ul></ul>
                     </div>
                 </div>
             </div>
