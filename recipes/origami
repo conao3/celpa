@@ -1,0 +1,1 @@
+( :repo "jcs-elpa/origami" :fetcher github)
