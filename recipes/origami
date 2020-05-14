@@ -1,1 +1,1 @@
-(origami :repo "jcs-elpa/origami" :fetcher github)
+(origami :repo "jcs-elpa/origami.el" :fetcher github)
