@@ -1,1 +1,1 @@
-(point-undo :fetcher github :repo "imakado/emacs-smartchr")
+(point-undo :fetcher github :repo "ncaq/point-undo")
