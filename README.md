@@ -1,4 +1,4 @@
-[![Header](http://celpa.conao3.com/)](https://raw.githubusercontent.com/conao3/files/master/blob/headers/png/celpa.png)
+[![Header](https://raw.githubusercontent.com/conao3/files/master/blob/headers/png/celpa.png)](http://celpa.conao3.com/)
 
 CELPA is a growing collection of `package.el`-compatible Emacs Lisp
 packages built automatically on our server from the upstream source
