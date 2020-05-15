@@ -79,38 +79,6 @@ from the Emacs manual.  Also note that the calls to `require` and
 `package-initialize` may be unnecessary depending on the Emacs version
 you use.
 
-### CELPA Stable
-
-Packages in CELPA are built directly from the latest package source
-code in the upstream repositories, but we also build and publish
-packages corresponding to the latest tagged code in those
-repositories, where version tags exist. These packages are published
-in a separate package archive called [CELPA
-Stable](https://stable.celpa.org). Most users should prefer CELPA over
-CELPA Stable.
-
-Some notes:
-
-* If you leave the original CELPA server in your `package-archives`
-  then by default you will get the *development* versions of packages
-  and not the stable ones, because the development versions are higher.
-
-* If your Emacs has the variables `package-pinned-packages` (available
-  in 24.4 and later) and/or `package-archive-priorities`, you can
-  customize or modify those variables as needed.
-
-* You can use the
-  [package-filter.el](https://github.com/milkypostman/package-filter)
-  package which we provide.
-
-* You will probably want to remove all packages and then reinstall
-  them. Any packages you already have installed from CELPA will never
-  get "updated" to the stable version because of the way version
-  numbering is handled.
-
-Note that the CELPA maintainers do not use CELPA Stable themselves,
-and do not particularly recommend its use.
-
 ## Contributing
 
 See the [CONTRIBUTING.org](CONTRIBUTING.org) document.
