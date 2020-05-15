@@ -23,7 +23,6 @@ read on for details.
 * [Recipe Format](#recipe-format)
 * [Build Scripts](#build-scripts)
 * [API](#api)
-* [Mirrors](#mirrors)
 * [About](#about)
 
 
@@ -383,23 +382,6 @@ This can be configured using the `package-build-archive-dir` variable.
 
 Repositories are checked out to the `working/` directory by default.
 This can be configured using the `package-build-working-dir` variable.
-
-## Mirrors
-
-Official mirrors are available (with many thanks to mirrorservice.org)
-so that if celpa.org is down, packages can still be installed.  The
-following are the HTTP/HTTPS URLs to use in `package-archives` for
-CELPA and CELPA Stable respectively:
-
-* [http://www.mirrorservice.org/sites/celpa.org/packages/](http://www.mirrorservice.org/sites/celpa.org/packages/)
-* [https://www.mirrorservice.org/sites/celpa.org/packages/](https://www.mirrorservice.org/sites/celpa.org/packages/)
-* [http://www.mirrorservice.org/sites/stable.celpa.org/packages/](http://www.mirrorservice.org/sites/stable.celpa.org/packages/)
-* [https://www.mirrorservice.org/sites/stable.celpa.org/packages/](https://www.mirrorservice.org/sites/stable.celpa.org/packages/)
-
-Only the packages are mirrored, not the web site front-end itself.
-
-_We are NOT responsible for the contents of any UNOFFICIAL mirror of
-our packages._
 
 ## About
 
