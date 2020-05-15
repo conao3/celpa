@@ -23,7 +23,6 @@ read on for details.
 * [Recipe Format](#recipe-format)
 * [Build Scripts](#build-scripts)
 * [API](#api)
-* [About](#about)
 
 
 ## Usage
@@ -382,8 +381,3 @@ This can be configured using the `package-build-archive-dir` variable.
 
 Repositories are checked out to the `working/` directory by default.
 This can be configured using the `package-build-working-dir` variable.
-
-## About
-
-*CELPA* is *Milkypostman's ELPA* or *Milkypostman's Experimental Lisp
- Package Archive* if you're not into the whole brevity thing.
