@@ -1,6 +1,4 @@
-# CELPA
-
-[![Build Status](https://travis-ci.org/celpa/celpa.png?branch=master)](https://travis-ci.org/celpa/celpa)
+[![Header](http://celpa.conao3.com/)](https://raw.githubusercontent.com/conao3/files/master/blob/headers/png/celpa.png)
 
 CELPA is a growing collection of `package.el`-compatible Emacs Lisp
 packages built automatically on our server from the upstream source
