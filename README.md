@@ -1,8 +1,8 @@
-# MELPA
+# CELPA
 
-[![Build Status](https://travis-ci.org/melpa/melpa.png?branch=master)](https://travis-ci.org/melpa/melpa)
+[![Build Status](https://travis-ci.org/celpa/celpa.png?branch=master)](https://travis-ci.org/celpa/celpa)
 
-MELPA is a growing collection of `package.el`-compatible Emacs Lisp
+CELPA is a growing collection of `package.el`-compatible Emacs Lisp
 packages built automatically on our server from the upstream source
 code using simple recipes. (Think of it as a server-side version of
 [el-get](https://github.com/dimitri/el-get), or even
@@ -11,7 +11,7 @@ code using simple recipes. (Think of it as a server-side version of
 Packages are updated at intervals throughout the day.
 
 To browse available packages, check out the
-[archive index page](https://melpa.org/).
+[archive index page](https://celpa.org/).
 
 Adding packages is as simple as submitting a new recipe as a pull request;
 read on for details.
@@ -29,10 +29,10 @@ read on for details.
 
 ## Usage
 
-To use the MELPA repository, you'll need an Emacs with
+To use the CELPA repository, you'll need an Emacs with
 `package.el`, ie. Emacs 24.1 or greater.
 
-Enable installation of packages from MELPA by adding an entry to
+Enable installation of packages from CELPA by adding an entry to
 `package-archives` after `(require 'package)` and before the call to
 `package-initialize` in your `init.el` or `.emacs` file:
 
@@ -47,19 +47,19 @@ which is unsafe because it allows man-in-the-middle attacks.
 There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+  (add-to-list 'package-archives (cons "celpa" (concat proto "://celpa.org/packages/")) t)
+  ;; Comment/uncomment this line to enable CELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
-  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "celpa-stable" (concat proto "://stable.celpa.org/packages/")) t)
   )
 (package-initialize)
 ```
 
 Then just use `M-x package-list-packages` to browse and install
-packages from MELPA and elsewhere.
+packages from CELPA and elsewhere.
 
 Note that you'll need to run `M-x package-refresh-contents` or `M-x
-package-list-packages` to ensure that Emacs has fetched the MELPA
+package-list-packages` to ensure that Emacs has fetched the CELPA
 package list before you can install packages with `M-x
 package-install` or similar.
 
@@ -68,7 +68,7 @@ the following instead:
 
 ```elisp
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("celpa" . "https://celpa.org/packages/") t)
 (package-initialize)
 ```
 
@@ -79,19 +79,19 @@ from the Emacs manual.  Also note that the calls to `require` and
 `package-initialize` may be unnecessary depending on the Emacs version
 you use.
 
-### MELPA Stable
+### CELPA Stable
 
-Packages in MELPA are built directly from the latest package source
+Packages in CELPA are built directly from the latest package source
 code in the upstream repositories, but we also build and publish
 packages corresponding to the latest tagged code in those
 repositories, where version tags exist. These packages are published
-in a separate package archive called [MELPA
-Stable](https://stable.melpa.org). Most users should prefer MELPA over
-MELPA Stable.
+in a separate package archive called [CELPA
+Stable](https://stable.celpa.org). Most users should prefer CELPA over
+CELPA Stable.
 
 Some notes:
 
-* If you leave the original MELPA server in your `package-archives`
+* If you leave the original CELPA server in your `package-archives`
   then by default you will get the *development* versions of packages
   and not the stable ones, because the development versions are higher.
 
@@ -104,11 +104,11 @@ Some notes:
   package which we provide.
 
 * You will probably want to remove all packages and then reinstall
-  them. Any packages you already have installed from MELPA will never
+  them. Any packages you already have installed from CELPA will never
   get "updated" to the stable version because of the way version
   numbering is handled.
 
-Note that the MELPA maintainers do not use MELPA Stable themselves,
+Note that the CELPA maintainers do not use CELPA Stable themselves,
 and do not particularly recommend its use.
 
 ## Contributing
@@ -136,7 +136,7 @@ the following form (`[...]` denotes optional or conditional values),
 a lisp symbol that has the same name as the package being specified.
 
 - `:fetcher` specifies the type of repository that `:url` or `:repo`
-  points to.  MELPA supports [`git`][git], [`github`][github],
+  points to.  CELPA supports [`git`][git], [`github`][github],
   [`gitlab`][gitlab], [`hg`][hg] (Mercurial), and
   [`bitbucket`][bitbucket].  The `bitbucket` fetcher derives from
   `hg`, so you have to use `git` for Git repositories hosted on
@@ -183,7 +183,7 @@ repository and thus the package should only be built from a subset of
 `.el` files. For example, elisp test files should not normally be
 packaged. *Any file specified at any path in the repository is copied
 to the root of the package.* More complex options are available,
-submit an [Issue](https://github.com/melpa/melpa/issues) if the
+submit an [Issue](https://github.com/celpa/celpa/issues) if the
 specified package requires more complex file specification.
 
     If the package merely requires some additional files, for example for
@@ -337,11 +337,11 @@ pony-mode-YYYYMMDD
 
 ## Build Scripts
 
-Building MELPA is all based around using the `Makefile` included in
+Building CELPA is all based around using the `Makefile` included in
 the root repository directory. Described below are the actions that
 accepted by the `Makefile`.
 
-* `all` -- Builds all packages under the `recipes/` directory and compiles the `index.html` file for the [melpa] website.
+* `all` -- Builds all packages under the `recipes/` directory and compiles the `index.html` file for the [celpa] website.
 
 * `recipes/<NAME>` -- Build individual recipe `<NAME>`. Built packages
 are put in the `packages/` folder with version corresponding to the
@@ -368,15 +368,15 @@ specified by the recipe; given according to the `%Y%m%d` format.
  such as Emacs 24. If you have an older version of Emacs, you can get a
  suitable `package.el` [here](https://git.savannah.gnu.org/gitweb/?p=emacs.git;a=blob_plain;hb=ba08b24186711eaeb3748f3d1f23e2c2d9ed0d09;f=lisp/emacs-lisp/package.el).
 
-[melpa]: https://melpa.org
+[celpa]: https://celpa.org
 
 
 ## API
 
 All repository code is contained in the file
 `package-build/package-build.el`.  That code is maintained in a
-[separate repository](https://github.com/melpa/package-build): the version
-in the MELPA repository is imported using `git subtree`.
+[separate repository](https://github.com/celpa/package-build): the version
+in the CELPA repository is imported using `git subtree`.
 
 ### Functions
 
@@ -404,7 +404,7 @@ repositories and package directories being built.
 - `package-build-archive-dir` : Location to store `archive-contents` and
 any built packages.
 
-- `package-build-recipes-dir` : Directory containing MELPA compatible
+- `package-build-recipes-dir` : Directory containing CELPA compatible
 recipes.  See [Recipe Format](#recipe-format) section for more details.
 
 
@@ -419,14 +419,14 @@ This can be configured using the `package-build-working-dir` variable.
 ## Mirrors
 
 Official mirrors are available (with many thanks to mirrorservice.org)
-so that if melpa.org is down, packages can still be installed.  The
+so that if celpa.org is down, packages can still be installed.  The
 following are the HTTP/HTTPS URLs to use in `package-archives` for
-MELPA and MELPA Stable respectively:
+CELPA and CELPA Stable respectively:
 
-* [http://www.mirrorservice.org/sites/melpa.org/packages/](http://www.mirrorservice.org/sites/melpa.org/packages/)
-* [https://www.mirrorservice.org/sites/melpa.org/packages/](https://www.mirrorservice.org/sites/melpa.org/packages/)
-* [http://www.mirrorservice.org/sites/stable.melpa.org/packages/](http://www.mirrorservice.org/sites/stable.melpa.org/packages/)
-* [https://www.mirrorservice.org/sites/stable.melpa.org/packages/](https://www.mirrorservice.org/sites/stable.melpa.org/packages/)
+* [http://www.mirrorservice.org/sites/celpa.org/packages/](http://www.mirrorservice.org/sites/celpa.org/packages/)
+* [https://www.mirrorservice.org/sites/celpa.org/packages/](https://www.mirrorservice.org/sites/celpa.org/packages/)
+* [http://www.mirrorservice.org/sites/stable.celpa.org/packages/](http://www.mirrorservice.org/sites/stable.celpa.org/packages/)
+* [https://www.mirrorservice.org/sites/stable.celpa.org/packages/](https://www.mirrorservice.org/sites/stable.celpa.org/packages/)
 
 Only the packages are mirrored, not the web site front-end itself.
 
@@ -435,5 +435,5 @@ our packages._
 
 ## About
 
-*MELPA* is *Milkypostman's ELPA* or *Milkypostman's Experimental Lisp
+*CELPA* is *Milkypostman's ELPA* or *Milkypostman's Experimental Lisp
  Package Archive* if you're not into the whole brevity thing.
