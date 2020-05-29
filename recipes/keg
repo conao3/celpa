@@ -1,0 +1,1 @@
+(keg :fetcher github :repo "conao3/keg.el")
