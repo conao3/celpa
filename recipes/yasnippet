@@ -1,0 +1,1 @@
+(yasnippet :repo "conao3/yasnippet" :fetcher github :files ("yasnippet.el"))
