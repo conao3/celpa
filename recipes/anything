@@ -1,0 +1,2 @@
+(anything :fetcher github :repo "emacs-jp/anything"
+          :files (:defaults "contrib/*"))
