@@ -1,0 +1,1 @@
+(gnus-gmail-oauth :fetcher github :repo "ggervasio/gnus-gmail-oauth")
