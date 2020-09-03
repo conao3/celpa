@@ -1,0 +1,1 @@
+(ox-gfm :repo "conao3/ox-gfm" :fetcher github)
