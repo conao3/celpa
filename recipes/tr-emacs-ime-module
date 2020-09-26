@@ -1,0 +1,2 @@
+(tr-emacs-ime-module
+ :fetcher github :branch "celpa" :repo "trueroad/tr-emacs-ime-module")
