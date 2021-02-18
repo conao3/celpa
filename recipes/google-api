@@ -1,0 +1,1 @@
+(google-api :fetcher github :repo "conao3/google-api.el")
