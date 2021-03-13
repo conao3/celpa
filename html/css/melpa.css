@@ -3,7 +3,7 @@ body {
   padding-bottom: 200px;
 }
 h1, .navbar, .navbar .brand, .navbar a, .navbar .nav>li>a {
-  color: #922793;
+  color: #222222;
 }
 .stable h1, .stable .navbar, .stable .navbar .brand, .stable .navbar a, .stable .navbar .nav>li>a {
   color: #3e999f;
