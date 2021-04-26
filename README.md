@@ -43,7 +43,7 @@ which is unsafe because it allows man-in-the-middle attacks.
 There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
-  (add-to-list 'package-archives (cons "celpa" (concat proto "://celpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "celpa" (concat proto "://celpa.conao3.com/")) t)
   ;; Comment/uncomment this line to enable CELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "celpa-stable" (concat proto "://stable.celpa.org/packages/")) t)
@@ -64,7 +64,7 @@ the following instead:
 
 ```elisp
 (require 'package)
-(add-to-list 'package-archives '("celpa" . "https://celpa.org/packages/") t)
+(add-to-list 'package-archives '("celpa" . "https://celpa.conao3.com/") t)
 (package-initialize)
 ```
 
@@ -332,7 +332,7 @@ specified by the recipe; given according to the `%Y%m%d` format.
  such as Emacs 24. If you have an older version of Emacs, you can get a
  suitable `package.el` [here](https://git.savannah.gnu.org/gitweb/?p=emacs.git;a=blob_plain;hb=ba08b24186711eaeb3748f3d1f23e2c2d9ed0d09;f=lisp/emacs-lisp/package.el).
 
-[celpa]: https://celpa.org
+[celpa]: https://celpa.conao3.com/
 
 
 ## API
