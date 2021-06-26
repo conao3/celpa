@@ -1,0 +1,1 @@
+(vertico :fetcher github :repo "minad/vertico")
