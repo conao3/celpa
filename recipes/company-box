@@ -1,1 +1,4 @@
-(company-box :repo "jcs090218/company-box" :fetcher github)
+(company-box
+ :repo "jcs090218/company-box"
+ :fetcher github
+ :files (:defaults "images"))
