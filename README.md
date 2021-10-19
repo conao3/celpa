@@ -1,5 +1,7 @@
 [![Header](https://raw.githubusercontent.com/conao3/files/master/blob/headers/png/celpa.png)](https://celpa.conao3.com/)
 
+[![Main workflow](https://github.com/celpa/celpa/actions/workflows/test.yml/badge.svg)](https://github.com/celpa/celpa/actions/workflows/test.yml)
+
 CELPA is a growing collection of `package.el`-compatible Emacs Lisp
 packages built automatically on our server from the upstream source
 code using simple recipes. (Think of it as a server-side version of
