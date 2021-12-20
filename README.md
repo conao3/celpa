@@ -45,7 +45,7 @@ which is unsafe because it allows man-in-the-middle attacks.
 There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
-  (add-to-list 'package-archives (cons "celpa" (concat proto "://celpa.conao3.com/")) t)
+  (add-to-list 'package-archives (cons "celpa" (concat proto "://celpa.conao3.com/packages/")) t)
   ;; Comment/uncomment this line to enable CELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "celpa-stable" (concat proto "://stable.celpa.org/packages/")) t)
@@ -66,7 +66,7 @@ the following instead:
 
 ```elisp
 (require 'package)
-(add-to-list 'package-archives '("celpa" . "https://celpa.conao3.com/") t)
+(add-to-list 'package-archives '("celpa" . "https://celpa.conao3.com/packages/") t)
 (package-initialize)
 ```
 
