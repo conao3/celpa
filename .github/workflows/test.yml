@@ -17,13 +17,13 @@ jobs:
         emacs_version:
           - '26.3'
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/cache@v5
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
         with:
           path: working
           key: ${{ runner.os }}-working
-      - uses: actions/setup-python@v6
-      - uses: purcell/setup-emacs@master
+      - uses: actions/setup-python@v7
+      - uses: purcell/setup-emacs@v8.0
         with:
           version: ${{ matrix.emacs_version }}
       - uses: conao3/setup-cask@v1.1
@@ -37,11 +37,10 @@ jobs:
 
       - name: Install SSH key
         if: github.ref == 'refs/heads/master'
-        uses: shimataro/ssh-key-action@v1
+        uses: shimataro/ssh-key-action@v2
         with:
-          private-key: ${{ secrets.SSH_KEY }}
-          public-key: ${{ secrets.SSH_KEY_PUBLIC }}
-          known-hosts: ${{ secrets.KNOWN_HOSTS }}
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
       - name: Deploy
         if: github.ref == 'refs/heads/master'
