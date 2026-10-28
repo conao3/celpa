@@ -1,0 +1,56 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions-minor-patch:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: docker
+    directory: /docker/builder
+    schedule:
+      interval: weekly
+    groups:
+      docker-minor-patch:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: docker
+    directory: /docker/logprocessor
+    schedule:
+      interval: weekly
+    groups:
+      docker-minor-patch:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: docker
+    directory: /docker/nginx
+    schedule:
+      interval: weekly
+    groups:
+      docker-minor-patch:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: docker
+    directory: /docker/rsyncd
+    schedule:
+      interval: weekly
+    groups:
+      docker-minor-patch:
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: docker
+    directory: /docker/syncer
+    schedule:
+      interval: weekly
+    groups:
+      docker-minor-patch:
+        update-types:
+          - minor
+          - patch
